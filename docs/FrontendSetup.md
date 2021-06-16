@@ -15,7 +15,7 @@ If you have done that already, then let the union begin :confettite:
     composer require inertiajs/inertia-laravel
     ```
 
-2. Paste the following in `resources/view/app.balde.php`
+2. Paste the following in `resources/views/app.balde.php`
     ```html
     <!DOCTYPE html>
     <html>
@@ -29,4 +29,66 @@ If you have done that already, then let the union begin :confettite:
         @inertia
     </body>
     </html>
+    ```
+
+3. Setup the Inertia Middleware
+    ```sh
+    php artisan inertia:middleware
+    ```
+    Add the `HandleInertiaRequests` as the last item in the web middleware group inside the `App\HTTP\Kennel` 
+    ```php
+    // App\HTTP\Kennel 
+    'web' => [
+    // ... other middlewares
+    // add this as the last item in the `web` middlewareGroup
+    \App\Http\Middleware\HandleInertiaRequests::class,
+    ],
+    ```
+
+ 
+4. Install the Client side
+    ```sh
+    npm install @inertiajs/inertia @inertiajs/inertia-svelte @inertiajs/progress
+    ```
+
+5. Paste the following into `resources/js/app.js`
+    ```js
+    import { createInertiaApp } from '@inertiajs/inertia-svelte'
+    import { InertiaProgress } from '@inertiajs/progress'
+
+    InertiaProgress.init()
+
+    createInertiaApp({
+    resolve: name => require(`./Pages/${name}.svelte`),
+    setup({ el, App, props }) {
+        new App({ target: el, props })
+    },
+    })
+    ```
+
+6. Create an Svelte page component
+    ```js
+    <script>
+        let name = 'world';
+    </script>
+
+    <style>
+    </style>
+
+    <h1> Hello {name}, welcome to Svelte </h1>
+    ```
+
+7. Edit your `routes/web.php` file like below
+    ```php
+
+    <?php
+
+    use Illuminate\Support\Facades\Route;
+    use Inertia\Inertia;
+
+    /** */
+
+    Route::get('/', function () {
+        return Inertia::render('Index');
+    });
     ```
