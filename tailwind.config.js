@@ -12,7 +12,10 @@ module.exports = {
     extend: {
         colors:{
             primary: "#D2F3F3",
-            teal: "#C3A3BB"
+            teal: "#F3A3FF"
+        },
+        fontFamily: {
+            display: ['Oduda']
         }
     },
   },

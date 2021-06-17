@@ -2,9 +2,9 @@ const mix = require("laravel-mix");
 require("laravel-mix-svelte");
 require("laravel-mix-tailwind");
 // require('laravel-mix-auto-extract');
-require("laravel-mix-artisan-serve");
+// require("laravel-mix-artisan-serve");
 const tailwindJit = require("@tailwindcss/jit");
-const glob = require("glob-all");
+
 
 /*
  |--------------------------------------------------------------------------
@@ -41,33 +41,8 @@ mix.js("resources/js/app.js", "public/js")
             },
         },
     })
-    .serve();
-
-// mix.browserSync({
-//     host: "localhost",
-//     port: 8000,
-//     open: "external",
-//     proxy: 'http://localhost:3100/',
-//     files: glob.sync([
-//         // "resources/js/**/*.{js,vue, svelte}",
-//         // "resources/css/**/*.scss", "resources/css/**/*.css",
-//         // "tailwind.config.js",
-//     ]),
-// });
-
-mix.browserSync({
-    open: false,
-    files: [
-      'app/**/*',
-      'public/**/*',
-      'resources/views/**/*',
-      'routes/**/*'
-    ]
-  })
-
-
-  /* mix.browserSync('my-domain.test');
- */
+    .browserSync('localhost:8000');
+    // .serve();
 
 // only cache version in prod
 if (mix.inProduction()) {

@@ -12,15 +12,6 @@
 
 <body>
     @inertia
-
-
-    @if (getenv('APP_ENV') === 'local')
-        <script id="__bs_script__">
-            const src = `http://${location.hostname}:3000/browser-sync/browser-sync-client.js?v=2.26.14`;
-            const scpt = `<script async src=${src} ><\/script>`
-            document.write(scpt)
-        </script>
-    @endif
 </body>
 
 </html>
