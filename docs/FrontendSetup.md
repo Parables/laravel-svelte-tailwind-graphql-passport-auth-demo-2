@@ -232,3 +232,4 @@ Try it out by running and make some changes in your `resources/js/Pages/Index.sv
 That's satisfactory, but that's not what we want. It takes some time for the project to build up, and we don't have any `Hot Module Replacement(HRM)` support here. The `browserSync` does a full page refresh and it does it fast. At least in my opinion. 
 
 Let go on and replace Laravel Mix with Snowpack but before that, know that there are going to be trade-offs. Laravel Mix has full support for [Tailwind-JIT]() mode while [Snowpack has some compactability issues]()
+
