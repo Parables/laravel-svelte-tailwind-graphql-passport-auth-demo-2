@@ -32,6 +32,10 @@
         "@inertiajs/inertia-svelte": "^0.7.2",
         "@inertiajs/progress": "^0.2.5",
         "@tailwindcss/jit": "^0.1.18",
+        "browser-sync": "^2.26.14",
+        "browser-sync-webpack-plugin": "^2.3.0",
+        "cross-env": "^7.0.3",
+        "glob-all": "^3.2.1",
         "laravel-mix-tailwind": "^0.1.2",
         "postcss-loader": "^6.1.0",
         "svelte-loader": "^3.1.2"

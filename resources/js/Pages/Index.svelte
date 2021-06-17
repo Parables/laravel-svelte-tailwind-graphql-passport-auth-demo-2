@@ -5,5 +5,5 @@
 <style>
 </style>
 
-<h1 class="text-green-600 bg-primary">Hello {name}, welcome to Svelte</h1>
+<h1 class="text-green-600 bg-teal">Hello {name}, welcome to Svelte</h1>
 
