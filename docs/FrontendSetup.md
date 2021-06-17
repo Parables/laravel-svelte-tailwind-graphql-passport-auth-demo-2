@@ -238,15 +238,17 @@ If you are okay with that, let's proceed. otherwise: enjoy building your project
 
 1. Install the following dependencies
 ```sh
-npm install snowpack svelte-hmr svelte-preprocess typescript cssnano autoprefixer @snowpack/plugin-dotenv @types/snowpack-env @tsconfig/svelte  @snowpack/plugin-typescript @snowpack/plugin-svelte @snowpack/plugin-postcss nodemon browserify watch 
+npm install snowpack svelte-hmr svelte-preprocess typescript cssnano autoprefixer @snowpack/plugin-dotenv @types/snowpack-env @tsconfig/svelte  @snowpack/plugin-typescript @snowpack/plugin-svelte postcss postcss-cli @snowpack/plugin-postcss nodemon browserify watch concurrently
 ```
 Setup your `package.json` scripts like below
 ```json
   "scripts": {
         "start": "snowpack build --watch",
         "build": "snowpack build",
-        "build:tailwind": "postcss ./resources/css/tailwind.css -o public/tailwind.css",
-        "watch:resources": "watch 'npm run build:tailwind' ./resources"
+        "build:tailwind": "postcss ./resources/css/tailwind.css -o public/css/app.css",
+        "nodemon:watch": "nodemon -x npm run build:tailwind -w tailwind.config.js -w tailwind.css",
+        "watch": "watch 'npm run build:tailwind' ./resources",
+        "start-dev": "concurrently  'npm run nodemon:watch' 'npm run start' ''"
     },
 ```
 
@@ -302,7 +304,7 @@ Setup your `package.json` scripts like below
                 /* Additional Options */
                 "strict": true,
                 "skipLibCheck": true,
-                "types": ["mocha", "snowpack-env"],
+                "types": ["snowpack-env"],
                 "forceConsistentCasingInFileNames": true,
                 "resolveJsonModule": true,
                 "useDefineForClassFields": true,
@@ -377,7 +379,7 @@ Setup your `package.json` scripts like below
 
 3. Edit the `resources/js/app.js` to look like below
     ```js
-    require("./bootstrap");
+    //require("./bootstrap");
     import { createInertiaApp } from "@inertiajs/inertia-svelte";
     import { InertiaProgress } from "@inertiajs/progress";
 
@@ -405,14 +407,8 @@ Setup your `package.json` scripts like below
         });
     }
     ```
-4. Inside the `public` directory, create a `global.css` file and paste the content below into it
-    ```css
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-    ```
 
-5. Edit the `resources/views/app.blade.php` to look like below
+4. Edit the `resources/views/app.blade.php` to look like below
     ```php
     <!DOCTYPE html>
     <html>
@@ -423,7 +419,6 @@ Setup your `package.json` scripts like below
             {{-- browserify require package output --}}
             {{-- <script src="bundle.js"></script> --}}
             <link rel="stylesheet" type="text/css" href="/css/app.css" />
-            <link rel="stylesheet" type="text/css" href="/global.css" />
         </head>
 
         <body>

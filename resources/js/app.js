@@ -1,12 +1,24 @@
-require("./bootstrap");
-import { createInertiaApp } from "@inertiajs/inertia-svelte";
-import { InertiaProgress } from "@inertiajs/progress";
+// import "./bootstrap";
+import { App } from '@inertiajs/inertia-svelte'
+import { InertiaProgress } from '@inertiajs/progress'
 
-InertiaProgress.init();
+InertiaProgress.init()
 
-createInertiaApp({
-    resolve: (name) => require(`./Pages/${name}.svelte`),
-    setup({ el, App, props }) {
-        new App({ target: el, props });
-    },
-});
+let el = document.getElementById('app')
+
+new App({
+  target: document.body,
+  props: {
+    initialPage: JSON.parse(el.dataset.page),
+    resolveComponent: (name) => import(`./Pages/${name}.svelte.js`),
+  },
+})
+
+// Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
+// Learn more: https://www.snowpack.dev/#hot-module-replacement
+if (import.meta.hot) {
+    import.meta.hot.accept();
+    import.meta.hot.dispose(() => {
+        app.$destroy();
+    });
+}
