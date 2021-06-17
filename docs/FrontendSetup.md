@@ -92,3 +92,7 @@ If you have done that already, then let the union begin :confettite:
         return Inertia::render('Index');
     });
     ```
+8. Install bundler dependencies
+    ```sh
+    pnpm install --save-dev webpack webpack-cli webpack-dev-server babel-loader css-loader laravel-mix-svelte svelte tailwindcss 
+    ```
