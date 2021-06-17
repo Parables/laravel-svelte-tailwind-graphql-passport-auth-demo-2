@@ -1,12 +1,13 @@
 {
     "private": true,
     "scripts": {
-        "dev": "pnpm run development",
+        "dev": "npm run development",
         "development": "mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "prod": "pnpm run production",
+        "start": "npm run watch",
+        "prod": "npm run production",
         "production": "mix --production"
     },
     "devDependencies": {
@@ -35,9 +36,12 @@
         "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.3.0",
         "cross-env": "^7.0.3",
+        "file-loader": "^6.2.0",
         "glob-all": "^3.2.1",
         "laravel-mix-tailwind": "^0.1.2",
+        "postcss-import": "^14.0.2",
         "postcss-loader": "^6.1.0",
+        "style-loader": "^2.0.0",
         "svelte-loader": "^3.1.2"
     }
 }

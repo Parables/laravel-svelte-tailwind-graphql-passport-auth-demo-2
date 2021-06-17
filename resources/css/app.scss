@@ -3,9 +3,9 @@
     src: url(my-font.woff) format("woff");
 }
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
     h1 {
