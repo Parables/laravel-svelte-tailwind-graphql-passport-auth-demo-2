@@ -2,13 +2,15 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-        "development": "mix",
+        "development": "TAILWIND_MODE=build  mix",
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "start": "npm run watch",
+        "start-dev": "npm run watch",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "start": "npm run dev",
+        "build": "npm run prod"
     },
     "devDependencies": {
         "axios": "^0.21",
@@ -26,22 +28,20 @@
         "tailwindcss": "^2.1.4",
         "webpack": "^5.39.0",
         "webpack-cli": "^4.7.2",
-        "webpack-dev-server": "^3.11.2"
-    },
-    "dependencies": {
-        "@inertiajs/inertia": "^0.9.2",
-        "@inertiajs/inertia-svelte": "^0.7.2",
-        "@inertiajs/progress": "^0.2.5",
+        "webpack-dev-server": "^3.11.2",
         "@tailwindcss/jit": "^0.1.18",
         "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.3.0",
-        "cross-env": "^7.0.3",
         "file-loader": "^6.2.0",
-        "glob-all": "^3.2.1",
         "laravel-mix-tailwind": "^0.1.2",
         "postcss-import": "^14.0.2",
         "postcss-loader": "^6.1.0",
         "style-loader": "^2.0.0",
         "svelte-loader": "^3.1.2"
+    },
+    "dependencies": {
+        "@inertiajs/inertia": "^0.9.2",
+        "@inertiajs/inertia-svelte": "^0.7.2",
+        "@inertiajs/progress": "^0.2.5"
     }
 }
